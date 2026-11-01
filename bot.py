@@ -142,11 +142,16 @@ async def budget_1500(c: types.CallbackQuery):
         )
     await c.answer()
 
-# ==================== BUDGET 3500 ====================
+# ==================== BUDGET 3500 (IDs 1 to 6) ====================
 @dp.callback_query(F.data == "budget_3500")
 async def budget_3500(c: types.CallbackQuery):
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🎮 ₹3500 - ID 6", callback_data="id_3500_6")],
+        [InlineKeyboardButton(text="🎮 ₹3500 - ID 1", callback_data="id_3500_1"),
+         InlineKeyboardButton(text="🎮 ₹3500 - ID 2", callback_data="id_3500_2")],
+        [InlineKeyboardButton(text="🎮 ₹3500 - ID 3", callback_data="id_3500_3"),
+         InlineKeyboardButton(text="🎮 ₹3500 - ID 4", callback_data="id_3500_4")],
+        [InlineKeyboardButton(text="🎮 ₹3500 - ID 5", callback_data="id_3500_5"),
+         InlineKeyboardButton(text="🎮 ₹3500 - ID 6", callback_data="id_3500_6")],
         [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="home")]
     ])
     try:
@@ -154,6 +159,132 @@ async def budget_3500(c: types.CallbackQuery):
     except Exception:
         await c.message.answer("💵 **बजट: ₹3500**\n\n👇 ID चुनें:", reply_markup=kb, parse_mode="Markdown")
     await c.answer()
+
+@dp.callback_query(F.data == "id_3500_1")
+async def id_3500_1(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_3500_1")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_3500")]
+    ])
+    try:
+        await c.message.answer("👑 **₹3500 - ID 1**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        p1 = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAID0WrmXwsVx_TqkqF1C7QpmVLMFjv-AAKRFGsbyXE4Vxfa158NlIgDAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID0GrmXwsKNaB61kIPiGhKNx14HijGAAKQFGsbyXE4V0LQUv_KNxoJAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDzGrmXwsKcK8XJNOZdwZhHL1XC6dkAAKMFGsbyXE4VxFQnPDfVulFAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDyGrmXwu-QZ-7dqU8dbjcx8R_TTUCAAKIFGsbyXE4VzHYr8Q0wUiNAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDy2rmXwt-qis4IWELry-9mshlD400AAKLFGsbyXE4V9dOBlQsBnrdAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDzmrmXwucBPsiCTM_Gcuhx_B26FcBAAKOFGsbyXE4V9CBnZq3ysJzAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDzWrmXwuhnzIotP7ObIMRQlxZ8sVfAAKNFGsbyXE4V8uGEj6bCyLPAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDymrmXws4_G3YCWlg7RW91pksDsAJAAKKFGsbyXE4V_sDhk2azoLzAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDyWrmXws_RLGqNSAfGI9xPbVor5wWAAKJFGsbyXE4V66O8AnaX_g3AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDz2rmXwuI1KTqXCw_cI0gy-kk5V4xAAKPFGsbyXE4V5PimiZDE7A1AQADAgADeQADPQQ")
+        ]
+        p2 = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAID3WrmXx1HlYxoxPM2E6OOXOypDmLUAAKTFGsbyXE4V8J12afb13dZAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID4mrmXx0raHm7QtX88aVUt5VueGh3AAKYFGsbyXE4V_zqC0gx_ztmAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID32rmXx21ELnYGAH9q5nEU4sNxr4rAAKVFGsbyXE4Vzp7YzV9X7_uAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID42rmXx06Ntb1I9CMW4AQHD4Gn2LyAAKZFGsbyXE4V-H2OocuM0NNAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID3GrmXx1l3UzXmtuRVjc5ghvHaLhXAAKSFGsbyXE4V4apAwQXlTuFAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID3mrmXx2-Qyy0OIfDfF9EBYs1_3iUAAKUFGsbyXE4V_em1tBobgMoAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID4WrmXx2RSPPjwBG0rvT-yd4pGWArAAKXFGsbyXE4V2DxywWjdxGQAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAID4GrmXx0zS07dx_WrA3C_sOntFRt3AAKWFGsbyXE4V42BtZ9ZSH6BAQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=p1)
+        await asyncio.sleep(1)
+        await c.message.answer_media_group(media=p2)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+@dp.callback_query(F.data == "id_3500_2")
+async def id_3500_2(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_3500_2")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_3500")]
+    ])
+    try:
+        await c.message.answer("👑 **₹3500 - ID 2**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        p = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDt2rmXZkUMF_SLcNImoIsKtGcJ6bHAAKCFGsbyXE4VxY-qIB4vzg5AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDtGrmXZkmku0MOp3BcXq-Sf8AAYfZRwACfxRrG8lxOFelnCFcMHFNLAEAAwIAA3kAAz0E"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDtWrmXZmbNk7EVwrjFaUGFtMXTROEAAKAFGsbyXE4V_qyJ-jUYwnpAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDtmrmXZleWaLVlyCORr_bTnF6BJAIAAKBFGsbyXE4V_y00F0fK-5VAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDvGrmXZkIn8TqbGAvg5Nqmyrcehe1AAKHFGsbyXE4Vw5ickZ7zY3MAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDu2rmXZlwyVvMhJCsoFIXQBrOWvd7AAKGFGsbyXE4VyqJjtU31D-7AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDumrmXZmBtvSv1wEObqcLDb5WWU7xAAKFFGsbyXE4V1o82XvtO9ZZAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDuWrmXZlWESO8l412HNZyw_2ihO5lAAKEFGsbyXE4VxZ5LEnsSl_1AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDs2rmXZlG5bHmh7tjvijNpM5PgbfNAAJ-FGsbyXE4VwZ8PdD3P9ClAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDuGrmXZkaBNDlt9xXUJh9nqTnKF_GAAKDFGsbyXE4Vxvfp2EyR9phAQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=p)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+@dp.callback_query(F.data == "id_3500_3")
+async def id_3500_3(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_3500_3")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_3500")]
+    ])
+    try:
+        await c.message.answer("👑 **₹3500 - ID 3**\n\n📹 वीडियो नीचे है:", parse_mode="Markdown")
+        await c.message.answer_video(video="BAACAgUAAxkBAAIDsWrmXCZLgfhl4NMPjgeBCVDcgLnGAAKzJQACyXEwV7ImsQl8RQnmPQQ")
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+@dp.callback_query(F.data == "id_3500_4")
+async def id_3500_4(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_3500_4")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_3500")]
+    ])
+    try:
+        await c.message.answer("👑 **₹3500 - ID 4**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        p = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDkGrmWd-U1P7b62V2ajiJL23jXp3ZAALTGWsbyXEwV18lC6t863t-AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDimrmWd-obymt7C_plP7oDaEUhpHAAALNGWsbyXEwV5fQ6Pme2KJgAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDjGrmWd-7vM1SvnO0jene4F5k02xsAALPGWsbyXEwV6H_EhCrqQjsAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDjWrmWd-NX2eQaPIvPbvgwqPa9jlpAALQGWsbyXEwVz5bO_4WmaOGAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDjmrmWd-tRoElGr8kFhl1KQeeVQEgAALRGWsbyXEwV0lkEzaKOgXqAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDkWrmWd93mcBB9oppOJ7bixcOteStAALUGWsbyXEwV61MPl1Y9pr4AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDi2rmWd8NE2vBBaWqSdKvQcILNjfNAALOGWsbyXEwVwKAT0Zd9fOcAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDiWrmWd_A5v4ruHcbl2IDLcpCLsOAAALMGWsbyXEwVxE9MpLzfHO0AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDj2rmWd9xBSj8FtWxQrAM4PbLzFRNAALSGWsbyXEwV2Czsv2FGul2AQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=p)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+@dp.callback_query(F.data == "id_3500_5")
+async def id_3500_5(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_3500_5")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_3500")]
+    ])
+    try:
+        await c.message.answer("👑 **₹3500 - ID 5**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        p = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDYmrmWE8wmQl51f3Ig9dyPB9yTLRzAAK7GWsbyXEwV-NkLjlStBEOAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDXmrmWE9FOygQvPWKYAABJzq8hjsprQACtxlrG8lxMFd9wtu5ZTdnaAEAAwIAA3kAAz0E"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDXWrmWE-OSPYdWZcmZmix6Dmu40ONAAK2GWsbyXEwVyeZGK5tZ-T4AQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDZGrmWE-SiN3qGFP6ObLrP8-gaedLAAK9GWsbyXEwV_vkvKT3KaZZAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDYWrmWE8NivPDrSowX_RGzsAQ7XvPAAK6GWsbyXEwV2uZLLtEB-TaAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDY2rmWE_CP06AtxBLfaXJM4jqU2e6AAK8GWsbyXEwV4WTiCQ7E9JWAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIDZmrmWE8E0NirojocnBYMFVw_-xQXAAK_GWsbyXEwV1UY3pko-OSgAQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=p)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
 
 @dp.callback_query(F.data == "id_3500_6")
 async def id_3500_6(c: types.CallbackQuery):
@@ -189,7 +320,6 @@ async def id_3500_6(c: types.CallbackQuery):
         await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
     except Exception as e:
         logging.error(f"Error: {e}")
-
 # ==================== BUDGET 7500 ====================
 @dp.callback_query(F.data == "budget_7500")
 async def budget_7500(c: types.CallbackQuery):
@@ -279,12 +409,12 @@ async def id_7500_3(c: types.CallbackQuery):
     except Exception as e:
         logging.error(f"Error: {e}")
 
-# ==================== BUDGET 8000 ====================
+# ==================== BUDGET 8000 (IDs 2 and 3) ====================
 @dp.callback_query(F.data == "budget_8000")
 async def budget_8000(c: types.CallbackQuery):
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="🎮 ₹8000 - ID 2", callback_data="id_7500_2")],
-        [InlineKeyboardButton(text="🎮 ₹8000 - ID 3", callback_data="id_7500_3")],
+        [InlineKeyboardButton(text="🎮 ₹8000 - ID 2", callback_data="id_8000_2"),
+         InlineKeyboardButton(text="🎮 ₹8000 - ID 3", callback_data="id_8000_3")],
         [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="home")]
     ])
     try:
@@ -292,6 +422,42 @@ async def budget_8000(c: types.CallbackQuery):
     except Exception:
         await c.message.answer("💵 **बजट: ₹8000**\n\n👇 ID चुनें:", reply_markup=kb, parse_mode="Markdown")
     await c.answer()
+
+@dp.callback_query(F.data == "id_8000_2")
+async def id_8000_2(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_8000_2")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_8000")]
+    ])
+    try:
+        await c.message.answer("👑 **₹8000 - ID 2**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        photos = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAPyauUEmZWkWfGmVQ7HY9xR0aLgJDAAAooTaxuIOilXpOoJrz-kT-EBAAMCAAN5AAM9BA"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAPwauUEmaCdhmltFuQaJ6RoxmOvBwIAAogTaxuIOilXRAABJPCQ90AeAQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=photos)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+@dp.callback_query(F.data == "id_8000_3")
+async def id_8000_3(c: types.CallbackQuery):
+    await c.answer("लोड हो रहा है...")
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="💳 खरीदें / Buy Now", callback_data="pay_8000_3")],
+        [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data="budget_8000")]
+    ])
+    try:
+        await c.message.answer("👑 **₹8000 - ID 3**\n\n📸 तस्वीरें नीचे हैं:", parse_mode="Markdown")
+        photos = [
+            InputMediaPhoto(media="AgACAgUAAxkBAAIBLmrluUuG0SOmCbind-C2bfNDUPA8AAKfF2sbiDoxVyYcuMrYE-XrAQADAgADeQADPQQ"),
+            InputMediaPhoto(media="AgACAgUAAxkBAAIBMWrluUvBDU2wZvtR0qKtF31N4iL4AAKiF2sbiDoxV8XBEiixpmlLAQADAgADeQADPQQ")
+        ]
+        await c.message.answer_media_group(media=photos)
+        await c.message.answer("⚠️ पेमेंट के लिए नीचे क्लिक करें:", reply_markup=kb, parse_mode="Markdown")
+    except Exception as e:
+        logging.error(f"Error: {e}")
 
 # ==================== PAYMENT & ADMIN WORKFLOW ====================
 @dp.callback_query(F.data.startswith("pay_"))
@@ -331,7 +497,7 @@ async def paid_handler(c: types.CallbackQuery, bot: Bot):
         )
         admin_kb = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
-                             InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
+             InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
         ])
         user_info = f"@{c.from_user.username}" if c.from_user.username else f"User ID: {uid}"
         await bot.send_message(
@@ -421,6 +587,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-             
-             
+    
