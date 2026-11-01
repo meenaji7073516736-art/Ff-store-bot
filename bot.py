@@ -4,7 +4,8 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from aiogram.exceptions import TelegramBadRequest
 
-TOKEN = "9087465860:AAEOwPR3sWVDQDZ0qcqiP8dKACZ8V5MCiOA"
+TOKEN = "9087465860:AAE0wPR3sWVDQD20qcqiPBdKACZ8V5MCiOA"
+
 ADMIN_ID = 8739974127
 ADMIN_USERNAME = "https://t.me/btrgamingzone"
 UPI_ID = "0378575515@ybl"
