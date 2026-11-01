@@ -333,4 +333,96 @@ async def paid_handler(c: types.CallbackQuery, bot: Bot):
         )
         admin_kb = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
-             InlineKeyboardButton(t
+                    admin_kb = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
+             InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
+        ])
+        user_info = f"@{c.from_user.username}" if c.from_user.username else f"User ID: {uid}"
+        await bot.send_message(
+            chat_id=ADMIN_ID,
+            text=f"🔔 **New Payment Request!**\n\n💰 Budget: ₹{b}\n🎮 ID No: {i}\n👤 User: {user_info}\n🆔 ID: `{uid}`",
+            reply_markup=admin_kb,
+            parse_mode="Markdown"
+        )
+    except Exception as e:
+        logging.error(f"Error in paid_handler: {e}")
+    await c.answer()
+
+@dp.callback_query(F.data.startswith("app_"))
+async def approve_handler(c: types.CallbackQuery, bot: Bot):
+    if c.from_user.id != ADMIN_ID:
+        await c.answer("⚠️ सिर्फ एडमिन ही अप्रूव कर सकते हैं!", show_alert=True)
+        return
+    uid = int(c.data.split("_")[1])
+    try:
+        await bot.send_message(
+            chat_id=uid,
+            text=(
+                "🎉 **Payment Approved!**\n\n"
+                "आपकी पेमेंट वेरीफाई हो चुकी है। बिना OTP के डायरेक्ट लॉगिन करने के लिए डिटेल्स:\n"
+                "📧 **Gmail:** Haiabsj8@gamil.com\n"
+                "🔑 **Password:** Hakabs78\n\n"
+                f"धन्यवाद! किसी भी सहायता के लिए संपर्क करें: {ADMIN_USERNAME}"
+            ),
+            parse_mode="Markdown"
+        )
+        await c.message.edit_text("✅ **Successfully Approved & ID Password Sent!**")
+    except Exception as e:
+        await c.message.answer(f"⚠️ User ko message bhejne me dikkat hui: {e}")
+    await c.answer()
+
+@dp.callback_query(F.data.startswith("rej_"))
+async def reject_handler(c: types.CallbackQuery, bot: Bot):
+    if c.from_user.id != ADMIN_ID:
+        await c.answer("⚠️ सिर्फ एडमिन ही रिजेक्ट कर सकते हैं!", show_alert=True)
+        return
+    uid = int(c.data.split("_")[1])
+    try:
+        await bot.send_message(
+            chat_id=uid,
+            text="❌ **Payment Not Received!**\nआपकी पेमेंट वेरीफाई नहीं हो सकी। कृपया एडमिन से संपर्क करें।",
+            parse_mode="Markdown"
+        )
+        await c.message.edit_text("❌ **Payment Rejected!**")
+    except Exception:
+        pass
+    await c.answer()
+
+@dp.message(F.photo)
+async def auto_forward_screenshot(message: types.Message, bot: Bot):
+    if message.from_user.id != ADMIN_ID:
+        try:
+            user_info = f"@{message.from_user.username}" if message.from_user.username else f"ID: {message.from_user.id}"
+            await bot.send_photo(
+                chat_id=ADMIN_ID,
+                photo=message.photo[-1].file_id,
+                caption=f"📸 **New Payment Screenshot Received!**\nFrom: {user_info} (`{message.from_user.id}`)",
+                parse_mode="Markdown"
+            )
+            await message.reply("✅ आपका पेमेंट स्क्रीनशॉट एडमिन को भेज दिया गया है! कृपया कुछ मिनट प्रतीक्षा करें।")
+        except Exception as e:
+            logging.error(f"Error forwarding photo: {e}")
+
+# ==================== RENDER WEB SERVER ====================
+async def health_check(request):
+    return web.Response(text="Bot is 100% Healthy and Active!")
+
+async def start_web_server():
+    app = web.Application()
+    app.router.add_get("/", health_check)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    port = int(os.environ.get("PORT", 10000))
+    site = web.TCPSite(runner, "0.0.0.0", port)
+    await site.start()
+
+# ==================== MAIN ====================
+async def main():
+    await bot.delete_webhook(drop_pending_updates=True)
+    await start_web_server()
+    print("Store Bot is starting...")
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+
+if __name__ == "__main__":
+    asyncio.run(main())
+    
