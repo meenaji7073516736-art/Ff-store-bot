@@ -6,7 +6,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.exceptions import TelegramBadRequest
 
-TOKEN = "9087465860:AAE0wPR3sWVDQD20qcqiPBdKACZ8V5MCiOA"
+TOKEN = "9087465860:AAFLeVGiQAsWGsV4DnLpK-qzuxPWzMdvy80"
 ADMIN_ID = 8739974127
 ADMIN_USERNAME = "https://t.me/btrgamingzone"
 UPI_ID = "0378575515@ybl"
@@ -66,14 +66,14 @@ async def budget_handler(c: types.CallbackQuery):
 
 # Render Web Service Health Check Server
 async def health_check(request):
-    return web.Response(text="Bot is running!")
+    return web.Response(text="Bot is Live and Running!")
 
 async def start_web_server():
     app = web.Application()
     app.router.add_get("/", health_check)
     runner = web.AppRunner(app)
     await runner.setup()
-    port = int(os.environ.get("PORT", 8080))
+    port = int(os.environ.get("PORT", 10000))
     site = web.TCPSite(runner, "0.0.0.0", port)
     await site.start()
 
