@@ -332,7 +332,7 @@ async def paid_handler(c: types.CallbackQuery, bot: Bot):
             "कृपया अपनी पेमेंट का **स्क्रीनशॉट** इसी चैट में सेंड कर दें ताकि एडमिन जल्दी अप्रूव कर सके।"
         )
         admin_kb = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
+             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
                     admin_kb = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
              InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
