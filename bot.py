@@ -301,7 +301,6 @@ async def pay_handler(c: types.CallbackQuery):
         [InlineKeyboardButton(text="✅ मैंने पेमेंट कर दिया है", callback_data=f"paid_{b}_{i}_{c.from_user.id}")],
         [InlineKeyboardButton(text="⬅️ पीछे जाएं", callback_data=f"id_{b}_{i}")]
     ])
-    
     notice = (
         f"💳 **SCAN & PAY (₹{b} - ID {i})**\n\n"
         f"📌 **UPI ID (Tap to Copy):**\n`{UPI_ID}`\n\n"
@@ -314,7 +313,6 @@ async def pay_handler(c: types.CallbackQuery):
         "━━━━━━━━━━━━━━━━━━━━\n"
         "👇 **नीचे दिया गया QR Code स्कैन करके पेमेंट करें और स्क्रीनशॉट भेजें:**"
     )
-    
     try:
         await c.message.answer(notice, parse_mode="Markdown")
         await c.message.answer_photo(photo=QR_PHOTO_ID)
@@ -332,10 +330,8 @@ async def paid_handler(c: types.CallbackQuery, bot: Bot):
             "कृपया अपनी पेमेंट का **स्क्रीनशॉट** इसी चैट में सेंड कर दें ताकि एडमिन जल्दी अप्रूव कर सके।"
         )
         admin_kb = InlineKeyboardMarkup(inline_keyboard=[
-             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
-                    admin_kb = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="✅ Approve", callback_data=f"app_{uid}"),
-             InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
+                             InlineKeyboardButton(text="❌ Reject", callback_data=f"rej_{uid}")]
         ])
         user_info = f"@{c.from_user.username}" if c.from_user.username else f"User ID: {uid}"
         await bot.send_message(
@@ -425,4 +421,6 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
+
+             
+             
